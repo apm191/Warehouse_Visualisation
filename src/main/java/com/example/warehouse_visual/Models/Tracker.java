@@ -24,6 +24,10 @@ public class Tracker
     public String date;
     public String time;
 
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
     public int getStatusId() {
         return statusId;
     }
