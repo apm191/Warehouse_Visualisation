@@ -41,7 +41,7 @@ public class TrackerController
     public void UpdateStatus(@RequestBody Request request)
     {
         Date date = new Date();
-        String currentDate = new SimpleDateFormat("dd/mm/yyyy").format(date);
+        String currentDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
         String currentTime = new SimpleDateFormat("HH:mm:ss").format(date);
 
         Tracker tracker = new Tracker(request.stationId,request.containerId,currentDate,currentTime);
