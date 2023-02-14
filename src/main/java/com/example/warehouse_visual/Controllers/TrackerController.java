@@ -1,5 +1,6 @@
 package com.example.warehouse_visual.Controllers;
 
+import com.example.warehouse_visual.Models.CustomTrackerResponse;
 import com.example.warehouse_visual.Models.Request;
 import com.example.warehouse_visual.Models.Tracker;
 import com.example.warehouse_visual.Services.TrackerService;
@@ -26,25 +27,23 @@ public class TrackerController
     private RabbitMQProducer rabbitMQProducer;
 
     @GetMapping("/get-status")
-    public List<Tracker> getStatus()
+    public CustomTrackerResponse getStatus()
     {
-        return trackerService.getAllstatus();
+        CustomTrackerResponse customTrackerResponse = new CustomTrackerResponse(trackerService.getAllstatus());
+        return customTrackerResponse;
     }
 
     @GetMapping("/get-status-id")
-    public List<Tracker> getStatus(@RequestParam String Id,@RequestParam String flag)
+    public CustomTrackerResponse getStatus(@RequestParam String Id,@RequestParam String flag)
     {
-        return trackerService.getStatusByStationId(Id,flag);
+        CustomTrackerResponse customTrackerResponse = new CustomTrackerResponse(trackerService.getStatusByStationId(Id,flag));
+        return customTrackerResponse;
     }
 
     @PostMapping("/update-status")
-    public void UpdateStatus(@RequestBody Request request)
+    public void UpdateStatus(@RequestBody Request request) throws InterruptedException
     {
-        Date date = new Date();
-        String currentDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
-        String currentTime = new SimpleDateFormat("HH:mm:ss").format(date);
-
-        Tracker tracker = new Tracker(request.stationId,request.containerId,currentDate,currentTime);
+        Tracker tracker = new Tracker(request.stationId,request.containerId,request.color)  ;
         trackerService.UpdateStatus(tracker);
         rabbitMQProducer.sendMessage(tracker);
     }

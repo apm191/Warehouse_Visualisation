@@ -18,14 +18,14 @@ public class NodeData
     public int nodeIndex;
 
     @OneToOne
-    @JoinColumn(name = "idx", referencedColumnName = "nodeid")
-    public Nodes node;
+    @JoinColumn(name = "idx", referencedColumnName = "id")
+    public Nodes data;
 
     @Override
     public String toString() {
         return "NodeData{" +
                 "nodeIndex=" + nodeIndex +
-                ", node=" + node +
+                ", data=" + data +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package com.example.warehouse_visual.Controllers;
 
+import com.example.warehouse_visual.Models.CustomEdgeResponse;
 import com.example.warehouse_visual.Models.EdgeData;
 import com.example.warehouse_visual.Models.Edges;
 import com.example.warehouse_visual.Services.EdgeDataService;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class EdgeDataController {
 
     @Autowired
@@ -20,7 +22,8 @@ public class EdgeDataController {
     }
 
     @GetMapping("/get-edge-data")
-    public List<EdgeData> getData() {
-        return edgeDataService.getAllEdges();
+    public CustomEdgeResponse getData() {
+        CustomEdgeResponse customEdgeResponse = new CustomEdgeResponse(edgeDataService.getAllEdges());
+        return customEdgeResponse;
     }
 }

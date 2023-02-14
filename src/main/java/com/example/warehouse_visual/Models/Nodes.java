@@ -17,12 +17,12 @@ import lombok.Setter;
 public class Nodes
 {
     @Id
-    public String nodeid;
+    public String id;
 
     @Override
     public String toString() {
         return "Nodes{" +
-                "nodeid='" + nodeid + '\'' +
+                "id='" + id + '\'' +
                 '}';
     }
 }

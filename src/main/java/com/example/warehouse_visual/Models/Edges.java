@@ -16,7 +16,7 @@ import lombok.Setter;
 @Entity
 public class Edges {
     @Id
-    public String edgeid;
-    public String src;
-    public String dest;
+    public String id;
+    public String source;
+    public String target;
 }

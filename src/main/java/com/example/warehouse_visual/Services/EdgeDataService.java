@@ -20,9 +20,9 @@ public class EdgeDataService {
     public void setEdge(EdgeData edgeData)
     {
         Edges edges = new Edges();
-        edges.setEdgeid(edgeData.edge.getEdgeid());
-        edges.setSrc(edgeData.edge.getSrc());
-        edges.setDest(edgeData.edge.getDest());
+        edges.setId(edgeData.getData().getId());
+        edges.setSource(edgeData.getData().getSource());
+        edges.setTarget(edgeData.getData().getTarget());
         edgeRepository.save(edges);
         edgeDataRepository.save(edgeData);
     }

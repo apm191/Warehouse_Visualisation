@@ -1,74 +1,78 @@
 package com.example.warehouse_visual.Models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Timestamp;
 
 @Entity
-@ToString
 @NoArgsConstructor
 public class Tracker
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int statusId;
+    public int Id;
     public String stationId;
     public String containerId;
-    public String date;
-    public String time;
+    @Column(insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    public Timestamp createdAt;
+    public String color;
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
+    public Tracker(String stationId, String containerId, String color) {
+        this.stationId = stationId;
+        this.containerId = containerId;
+        this.color = color;
     }
 
-    public int getStatusId() {
-        return statusId;
+    public int getId() {
+        return Id;
     }
 
     public String getStationId() {
         return stationId;
     }
 
-    public void setStationId(String stationId) {
-        this.stationId = stationId;
-    }
-
     public String getContainerId() {
         return containerId;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setId(int statusId) {
+        this.Id = statusId;
+    }
+
+    public void setStationId(String stationId) {
+        this.stationId = stationId;
     }
 
     public void setContainerId(String containerId) {
         this.containerId = containerId;
     }
 
-    public String getDate() {
-        return date;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public Tracker(String stationId, String containerId, String date, String time) {
-        this.stationId = stationId;
-        this.containerId = containerId;
-        this.date = date;
-        this.time = time;
+    @Override
+    public String toString() {
+        return "Tracker{" +
+                "statusId=" + Id +
+                ", stationId='" + stationId + '\'' +
+                ", containerId='" + containerId + '\'' +
+                ", date='" + createdAt + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 
     // public String orderId;

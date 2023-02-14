@@ -1,16 +1,15 @@
 package com.example.warehouse_visual.Controllers;
 
+import com.example.warehouse_visual.Models.CustomNodeResponse;
 import com.example.warehouse_visual.Models.NodeData;
 import com.example.warehouse_visual.Services.NodeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class NodeDataController {
 
     @Autowired
@@ -23,7 +22,9 @@ public class NodeDataController {
     }
 
     @GetMapping("/get-node-data")
-    public List<NodeData> getData() {
-        return nodeDataService.getAllNodes();
+    public CustomNodeResponse getData()
+    {
+        CustomNodeResponse customNodeResponse = new CustomNodeResponse(nodeDataService.getAllNodes());
+        return customNodeResponse;
     }
 }

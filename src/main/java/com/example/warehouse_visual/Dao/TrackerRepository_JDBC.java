@@ -36,11 +36,11 @@ public class TrackerRepository_JDBC
                 while(rs.next())
                 {
                     Tracker tracker = new Tracker();
-                    tracker.setStatusId(rs.getInt("status_id"));
+                    tracker.setId(rs.getInt("status_id"));
                     tracker.setStationId(rs.getString("station_id"));
                     tracker.setContainerId(rs.getString("container_id"));
-                    tracker.setDate(rs.getString("date"));
-                    tracker.setTime(rs.getString("time"));
+                    tracker.setCreatedAt(rs.getTimestamp("date"));
+                    tracker.setColor(rs.getString("color"));
 
                     trackerList.add(tracker);
                 }

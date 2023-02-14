@@ -18,14 +18,14 @@ public class EdgeData
     public int edgeIndex;
 
     @OneToOne
-    @JoinColumn(name = "Eidx", referencedColumnName = "edgeid")
-    public Edges edge;
+    @JoinColumn(name = "Eidx", referencedColumnName = "id")
+    public Edges data;
 
     @Override
     public String toString() {
         return "EdgeData{" +
                 "edgeIndex=" + edgeIndex +
-                ", edge=" + edge +
+                ", data=" + data +
                 '}';
     }
 }
