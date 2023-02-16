@@ -26,4 +26,9 @@ public class NodeDataController {
         CustomNodeResponse customNodeResponse = new CustomNodeResponse(nodeDataService.getAllNodes());
         return customNodeResponse;
     }
+
+    @PutMapping("/update-node-data")
+    public void updateData(@RequestBody NodeData nodeData) {
+        nodeDataService.updateNodes(nodeData);
+    }
 }

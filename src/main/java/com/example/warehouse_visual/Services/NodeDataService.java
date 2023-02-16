@@ -8,6 +8,7 @@ import com.example.warehouse_visual.Models.Nodes;
 import com.example.warehouse_visual.Models.Position;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Node;
 
 import java.util.List;
 
@@ -25,7 +26,30 @@ public class NodeDataService {
     public void setNodes(NodeData nodeData)
     {
         Nodes nodes = new Nodes();
-        nodes.setNodeid(nodeData.getNode().getNodeid());
+        nodes.setId(nodeData.getData().getId());
+        nodes.setType(nodeData.getData().getType());
+        nodes.setColor(nodeData.getData().getColor());
+        nodes.setWidth(nodeData.getData().getWidth());
+        nodes.setHeight(nodeData.getData().getHeight());
+
+        Position position = new Position();
+        position.setId(nodeData.getPosition().getId());
+        position.setX(nodeData.getPosition().getX());
+        position.setY(nodeData.getPosition().getY());
+
+        positionRepository.save(position);
+        nodeRepository.save(nodes);
+
+        nodeDataRepository.save(nodeData);
+    }
+
+    public void updateNodes(NodeData nodeData) {
+        Nodes nodes = new Nodes();
+        nodes.setId(nodeData.getData().getId());
+        nodes.setType(nodeData.getData().getType());
+        nodes.setColor(nodeData.getData().getColor());
+        nodes.setWidth(nodeData.getData().getWidth());
+        nodes.setHeight(nodeData.getData().getHeight());
         nodeRepository.save(nodes);
 
         Position position = new Position();
@@ -36,7 +60,6 @@ public class NodeDataService {
 
         nodeDataRepository.save(nodeData);
     }
-
 
     public List<NodeData> getAllNodes() {
         return nodeDataRepository.findAll();
