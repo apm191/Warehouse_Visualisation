@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 @Getter
 @Setter
@@ -18,14 +19,21 @@ public class NodeData
     public int nodeIndex;
 
     @OneToOne
-    @JoinColumn(name = "idx", referencedColumnName = "id")
+//    @Column(unique = true)
+    @JoinColumn(name = "data_id", referencedColumnName = "id")
     public Nodes data;
+
+    @OneToOne
+    @JoinColumn(name = "position_id",referencedColumnName = "id")
+    public Position position;
 
     @Override
     public String toString() {
         return "NodeData{" +
                 "nodeIndex=" + nodeIndex +
                 ", data=" + data +
+                ", position=" + position +
                 '}';
     }
 }
+

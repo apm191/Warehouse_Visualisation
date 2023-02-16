@@ -15,7 +15,6 @@ public class NodeDataController {
     @Autowired
     private NodeDataService nodeDataService;
 
-
     @PostMapping("/post-node-data")
     public void sendData(@RequestBody NodeData nodeData) {
          nodeDataService.setNodes(nodeData);

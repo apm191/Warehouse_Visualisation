@@ -19,10 +19,22 @@ public class Nodes
     @Id
     public String id;
 
+    public String type;
+
+    public String color;
+
+    public Integer width;
+
+    public Integer height;
+
     @Override
     public String toString() {
         return "Nodes{" +
                 "id='" + id + '\'' +
+                ", type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                ", width=" + width +
+                ", height=" + height +
                 '}';
     }
 }
