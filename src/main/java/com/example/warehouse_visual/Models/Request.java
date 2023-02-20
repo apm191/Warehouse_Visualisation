@@ -9,7 +9,8 @@ import lombok.ToString;
 @ToString
 public class Request
 {
-    public String stationId;
+    public String fromScanner;
+    public String toScanner;
     public String containerId;
     public String color;
 

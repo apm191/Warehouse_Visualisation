@@ -19,7 +19,6 @@ public class NodeData
     public int nodeIndex;
 
     @OneToOne
-//    @Column(unique = true)
     @JoinColumn(name = "data_id", referencedColumnName = "id")
     public Nodes data;
 

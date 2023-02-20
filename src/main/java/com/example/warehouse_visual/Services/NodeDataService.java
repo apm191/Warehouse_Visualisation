@@ -57,8 +57,6 @@ public class NodeDataService {
         position.setX(nodeData.getPosition().getX());
         position.setY(nodeData.getPosition().getY());
         positionRepository.save(position);
-
-        nodeDataRepository.save(nodeData);
     }
 
     public List<NodeData> getAllNodes() {

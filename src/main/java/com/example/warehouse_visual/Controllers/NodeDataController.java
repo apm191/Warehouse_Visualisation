@@ -10,8 +10,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*",allowedHeaders = "*")
-public class NodeDataController {
-
+public class NodeDataController
+{
     @Autowired
     private NodeDataService nodeDataService;
 
