@@ -41,8 +41,6 @@ public class TrackerRepository_JDBC
                     tracker.setToScanner(rs.getString("to_scanner"));
                     tracker.setContainerId(rs.getString("container_id"));
                     tracker.setCreatedAt(rs.getTimestamp("date"));
-                    tracker.setColor(rs.getString("color"));
-
                     trackerList.add(tracker);
                 }
                 return trackerList;

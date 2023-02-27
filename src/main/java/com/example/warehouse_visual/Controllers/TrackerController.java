@@ -34,7 +34,7 @@ public class TrackerController
     @PostMapping("/update-status")
     public void UpdateStatus(@RequestBody Request request) throws InterruptedException
     {
-        Tracker tracker = new Tracker(request.fromScanner,request.toScanner, request.containerId,request.color)  ;
+        Tracker tracker = new Tracker(request.fromScanner,request.toScanner, request.containerId)  ;
         trackerService.UpdateStatus(tracker);
         rabbitMQProducer.sendMessage(tracker);
     }
